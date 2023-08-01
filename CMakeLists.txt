@@ -17,8 +17,24 @@ add_subdirectory(mbed-os) # Load Mbed OS build targets.  Must be added before an
 
 project(RT_ML) # TODO: change this to your project name
 
-add_executable(RT_ML main.cpp variant.cpp)
-target_link_libraries(RT_ML mbed-os) # Can also link to mbed-baremetal here
+add_executable(RT_ML)
+
+target_include_directories(RT_ML
+    PRIVATE
+        .   
+)
+
+target_sources(RT_ML
+    PRIVATE
+        main.cpp
+        variant.cpp
+)   
+
+target_link_libraries(RT_ML
+    mbed-os
+    mbed-storage-sd
+) # Can also link to mbed-baremetal here
+
 mbed_set_post_build(RT_ML) # Must call this for each target to set up bin file creation, code upload, etc
 
 mbed_finalize_build() # Make sure this is the last line of the top-level buildscript

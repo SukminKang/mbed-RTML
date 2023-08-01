@@ -4,8 +4,6 @@
 #include "nrf_uarte.h"
 #include "nrf_uart.h"
 
-I2C_PULLUP = p32,
-
 void initVariant() {
   // turn power LED on
   DigitalOut(LED_POWER, 1);

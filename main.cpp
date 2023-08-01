@@ -1,5 +1,5 @@
 #include "mbed.h"
-#include "COMPONENT_SD/include/SD/SDBlockDevice.h"
+#include "SDBlockDevice.h"
 
 // Weak empty variant initialization function.
 // May be redefined by variant files.
@@ -15,7 +15,7 @@ void initVariant() { }
 SDBlockDevice sd(D11, D12, A7, A6);
 uint8_t block[512] = "Hello World!\n";
 
-int sdInit()
+int sdTest()
 {
 	// Call the SDBlockDevice instance initialisation method
     if (0 != sd.init()) {
@@ -29,7 +29,7 @@ int sdInit()
     printf("sd erase size: %llu\n",   sd.get_erase_size());
 
     // Set the frequency
-    if (0 != sd.frequency(4000000)) {
+    if (0 != sd.frequency(8000000)) {
         printf("Error setting frequency \n");
     }
 
@@ -56,8 +56,6 @@ int main()
 {
 	initVariant();
 
-	sdInit();
-
 	int cnt = 0;
 	DigitalOut main_led(LED1);
 	DigitalOut red_led(LED2);
@@ -68,17 +66,20 @@ int main()
 	{
 		printf("Hello world from Mbed CE! %d\n", cnt++);
 		main_led = 1;
-		ThisThread::sleep_for(250ms);
+		ThisThread::sleep_for(500ms);
 		main_led = 0;
 		red_led = 1;
-		ThisThread::sleep_for(250ms);
+		ThisThread::sleep_for(500ms);
 		red_led = 0;
 		green_led = 1;
-		ThisThread::sleep_for(250ms);
+		ThisThread::sleep_for(500ms);
 		green_led = 0;
 		blue_led = 1;
-		ThisThread::sleep_for(250ms);
+		ThisThread::sleep_for(500ms);
 		blue_led = 0;
+
+		sdTest();
+		ThisThread::sleep_for(500ms);
 	}
 
 	// main() is expected to loop forever.

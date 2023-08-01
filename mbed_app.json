@@ -1,6 +1,11 @@
 {
     "target_overrides": {
         "*": {
+            "sd.SPI_MOSI" : "D11",
+            "sd.SPI_MISO" : "D12",
+            "sd.SPI_CLK"  : "A7",
+            "sd.SPI_CS"   : "A6",
+            "target.components_add": ["SD"],
             "platform.stdio-baud-rate": 115200,
             "platform.stdio-buffered-serial": 1
         }
