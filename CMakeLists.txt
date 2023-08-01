@@ -15,10 +15,10 @@ include(mbed-os/tools/cmake/app.cmake) # Load Mbed CE toolchain file and basic b
 
 add_subdirectory(mbed-os) # Load Mbed OS build targets.  Must be added before any other subdirectories
 
-project(MbedCEHelloWorld) # TODO: change this to your project name
+project(RT_ML) # TODO: change this to your project name
 
-add_executable(HelloWorld main.cpp)
-target_link_libraries(HelloWorld mbed-os) # Can also link to mbed-baremetal here
-mbed_set_post_build(HelloWorld) # Must call this for each target to set up bin file creation, code upload, etc
+add_executable(RT_ML main.cpp variant.cpp)
+target_link_libraries(RT_ML mbed-os) # Can also link to mbed-baremetal here
+mbed_set_post_build(RT_ML) # Must call this for each target to set up bin file creation, code upload, etc
 
 mbed_finalize_build() # Make sure this is the last line of the top-level buildscript
