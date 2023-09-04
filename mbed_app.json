@@ -7,7 +7,9 @@
             "sd.SPI_CS"   : "A6",
             "target.components_add": ["SD"],
             "platform.stdio-baud-rate": 115200,
-            "platform.stdio-buffered-serial": 1
+            "platform.stdio-buffered-serial": 1,
+            "platform.minimal-printf-enable-floating-point": true,
+            "rtos.main-thread-stack-size": 20480
         }
     }
 }
